@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="../lib/bin/$(Configuration)/net8.0/lib.dll" />
+  </ItemGroup>
+
+  <Target Name="Build Library"
+    Condition="!Exists('../lib/bin/$(Configuration)/net8.0/lib.dll')"
+    BeforeTargets="BeforeBuild">
+    <Message Text="Building Library…" />
+    <Exec Command="dotnet build -restore ../lib/lib.csproj -p:Configuration=$(Configuration)" />
+  </Target>
+</Project>

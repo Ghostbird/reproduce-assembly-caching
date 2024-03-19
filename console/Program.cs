@@ -1,0 +1,3 @@
+﻿using lib;
+
+new TryToFindMe();
