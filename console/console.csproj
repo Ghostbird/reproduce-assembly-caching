@@ -13,7 +13,7 @@
 
   <Target Name="Build Library"
     Condition="!Exists('../lib/bin/$(Configuration)/net8.0/lib.dll')"
-    BeforeTargets="BeforeBuild">
+    BeforeTargets="ResolveAssemblyReferences">
     <Message Text="Building Library…" />
     <Exec Command="dotnet build -restore ../lib/lib.csproj -p:Configuration=$(Configuration)" />
   </Target>
